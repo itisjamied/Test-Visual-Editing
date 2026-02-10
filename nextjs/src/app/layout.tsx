@@ -4,6 +4,8 @@ import "./globals.css";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
+import  Footer  from "@/components/Footer";
+import  Header  from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
         {children}
          {(await draftMode()).isEnabled && (
           <>
@@ -37,6 +40,7 @@ export default async function RootLayout({
             <DisableDraftMode />
           </>
         )}
+        <Footer />
       </body>
     </html>
   );
